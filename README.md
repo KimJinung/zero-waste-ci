@@ -9,3 +9,7 @@
 5. [Implementation Details](#implementation-details)
 6. [Benchmarks (Comparison)](#benchmarks-comparison)
 7. [How to Use](#how-to-use)
+
+---
+
+## Background & Problem
