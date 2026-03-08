@@ -32,3 +32,27 @@
 
 - High-Density Resource Utilization
   - 팀별 전용 노드 대신 공용 노드 풀에서 컨테이너 기반으로 병렬 빌드를 수행하여, 유휴 자원을 최소화하고 인프라 밀도를 극대화한다.
+
+---
+
+## System Architecture
+본 시스템은 인프라 효율화를 위한 워크플로우 아키텍처와 이를 지탱하는 기술 스택으로 구성된다. 운영 시나리오는 인프라 엔지니어와 사용자의 역할을 분리하여 운영 효율을 극대화한다.
+
+### [Operating Scenario: Infrastructure as a Service]
+1. Standardization (Infra Engineer)
+    - 빌드 환경에 필수적인 코어 패키지만 포함된 Base Image를 구성하고 배포한다. 이는 전사 인프라의 보안 및 표준 규격을 준수한다.
+
+
+2. Customization (Developer)
+    - 개발자는 프로젝트 특성에 맞춰 Base Image를 Layering한 커스텀 이미지를 생성한다. 필요한 패키지 변경 사항은 코드로 관리하며 Pull Request를 통해 투명하게 검토된다.
+
+
+3. Verification & Distribution (CI/CD Pipeline)
+    - 새로운 환경 설정이 포함된 PR이 오픈되면, CI 서버에서 Smoke Test를 수행하여 런타임 안정성을 검증한다. 검증이 완료된 이미지는 Container Registry로 자동 푸시된다.
+
+
+4. Execution (Jenkins Runtime)
+    - 사용자는 Jenkins 파이프라인에서 검증된 이미지를 호출하여 빌드를 수행한다. 호스트 환경에 구애받지 않는 독립적인 빌드 런타임이 보장된다.
+
+### [Architecture Overview]
+위 시나리오를 구현하기 위해 호스트 리소스 공유 기반의 컨테이너 실행 구조를 다음과 같이 설계했다.
