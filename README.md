@@ -3,12 +3,13 @@
 ## Table of Contents
 
 1. [Background & Problem](#background--problem)
-2. [System Architecture](#system-architecture)
-3. [Key Features](#key-features)
-4. [Tech Stacks](#tech-stacks)
-5. [Implementation Details](#implementation-details)
-6. [Benchmarks (Comparison)](#benchmarks-comparison)
-7. [How to Use](#how-to-use)
+2. [Key Feature](#Key-Feature-Version-Controlled-Build-Environment)
+3. [System Architecture](#system-architecture)
+4. [Key Features](#key-features)
+5. [Tech Stacks](#tech-stacks)
+6. [Implementation Details](#implementation-details)
+7. [Benchmarks (Comparison)](#benchmarks-comparison)
+8. [How to Use](#how-to-use)
 
 ---
 
@@ -32,6 +33,20 @@
 
 - High-Density Resource Utilization
   - 팀별 전용 노드 대신 공용 노드 풀에서 컨테이너 기반으로 병렬 빌드를 수행하여, 유휴 자원을 최소화하고 인프라 밀도를 극대화한다.
+
+---
+
+## Key Feature: Version-Controlled Build Environment
+본 프로젝트의 핵심 가치는 인프라 밀도 극대화를 넘어 모든 빌드 디펜던시를 코드 기반으로 자산화(Assetization) 했다는 점에 있다.
+
+1. Immutable Infrastructure
+    - 호스트 머신의 'Mutable'한 상태(임의 설치 등)를 지양하고, 모든 환경 변화를 Dockerfile을 통한 Immutable Image로 관리한다.
+
+2. Full Traceability via Git
+    - 특정 빌드 도구의 버전 변경이나 패키지 추가 이력을 Git 커밋 로그로 추적할 수 있다. 이는 장애 발생 시 환경 변화에 따른 원인 파악(Root Cause Analysis) 시간을 획기적으로 단축시킨다.
+
+3. Governance & Security Audit
+    - 전사적으로 사용되는 오픈소스 및 패키지 목록을 중앙에서 가시화할 수 있어, 보안 취약점(CVE) 발생 시 신속한 영향도 파악 및 일괄 패치가 가능하다.
 
 ---
 
