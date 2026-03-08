@@ -25,10 +25,10 @@
 
 
 ### [Solution Strategy: Implementation of Zero-Waste CI]
-위 문제를 해결하기 위해 하드웨어 리소스와 빌드 환경을 분리하는 컨테이너 기반 에이전트(Containerized Agent) 아키텍처를 설계했다.
+위 문제를 해결하기 위해 호스트의 물리적 리소스는 공유하되, 개별 빌드 환경은 컨테이너로 격리하는 Runtime Isolation 전략을 채택했다.
 
-- Dependency Isolation: 모든 빌드 디펜던시를 Docker 이미지로 격리하여 호스트 머신과의 의존성을 완전히 제거했다.
+- Build-in-Container Execution
+  - 호스트 머신에 직접 도구를 설치하는 대신, 빌드 스텝마다 필요한 Docker 이미지를 런타임으로 호출한다. 이를 통해 단일 호스트 내에서 서로 다른 버전의 OS와 SDK(예: Yocto Project, AOSP)가 충돌 없이 공존할 수 있다.
 
-- Elastic Resource Pool: 고정 할당 방식에서 벗어나 모든 팀이 공유하는 **탄력적 리소스 풀(Shared Resource Pool)**을 구축했다.
-
-- On-Demand Lifecycle: 빌드 요청 시점에 필요한 OS 환경을 컨테이너로 프로비저닝하고, 빌드 종료 즉시 리소스를 반환함으로써 전체 컴퓨팅 리소스를 남김없이 활용할 수 있는 Zero-Waste CI 인프라를 구현했다.
+- High-Density Resource Utilization
+  - 팀별 전용 노드 대신 공용 노드 풀에서 컨테이너 기반으로 병렬 빌드를 수행하여, 유휴 자원을 최소화하고 인프라 밀도를 극대화한다.
