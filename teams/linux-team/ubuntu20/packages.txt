@@ -1,0 +1,28 @@
+# Yocto-required OS packages
+# Ref: https://docs.yoctoproject.org/ref-manual/system-requirements.html
+
+# Python
+python3
+python3-pip
+python3-pexpect
+python3-jinja2
+python3-git
+python3-subunit
+
+# Build essentials
+chrpath
+cpio
+debianutils
+diffstat
+gawk
+socat
+texinfo
+
+# Compression
+lz4
+zlib1g-dev
+
+# QEMU (for runqemu)
+libsdl1.2-dev
+mesa-common-dev
+xterm
