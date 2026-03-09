@@ -1,0 +1,32 @@
+# AOSP-required OS packages
+# Ref: https://source.android.com/docs/setup/start/initializing
+
+# JDK (Android 10+)
+openjdk-11-jdk
+
+# Build tools
+bison
+flex
+gperf
+gcc-multilib
+g++-multilib
+
+# Python
+python3
+python3-pip
+
+# Libraries
+lib32ncurses5-dev
+lib32z1
+libc6-dev-i386
+libgl1-mesa-dev
+libncurses5
+libssl-dev
+libx11-dev
+libxml2
+libxml2-utils
+x11proto-core-dev
+
+# Utilities
+xsltproc
+zip

@@ -1,0 +1,11 @@
+# Cross-compiler toolchains (tarball-based)
+# Format: <name> <version> <url>
+# Installs to /opt/toolchains/<name>-<version>/bin
+#
+# Note: The AOSP build system bundles its own Clang/GCC prebuilts
+# under prebuilts/ (fetched via repo sync), so no external toolchain
+# is required for a standard AOSP build.
+# Add entries here only for out-of-tree builds or custom targets.
+
+# Example: Android NDK for standalone native builds
+# android-ndk  r27c  https://dl.google.com/android/repository/android-ndk-r27c-linux.zip
